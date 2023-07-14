@@ -1,0 +1,48 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Metal_Aluminum_Anodized
+Ka 0.000000 0.000000 0.000000
+Kd 0.792157 0.819608 0.858824
+Ks 0.330000 0.330000 0.330000
+map_Kd 货架/Metal_Aluminum_Anodized.jpg
+
+newmtl FrontColor
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl Color_B24
+Ka 0.000000 0.000000 0.000000
+Kd 0.200000 0.137255 0.117647
+Ks 0.330000 0.330000 0.330000
+
+newmtl Metal_Corrogated_Shiny
+Ka 0.000000 0.000000 0.000000
+Kd 0.756863 0.756863 0.756863
+Ks 0.330000 0.330000 0.330000
+map_Kd 货架/Metal_Corrogated_Shiny.jpg
+
+newmtl _8
+Ka 0.000000 0.000000 0.000000
+Kd 0.372549 0.380392 0.262745
+Ks 0.330000 0.330000 0.330000
+
+newmtl Layer_vg_conveyor
+Ka 0.000000 0.000000 0.000000
+Kd 0.372549 0.380392 0.262745
+Ks 0.330000 0.330000 0.330000
+
+newmtl Steel_Brushed_Stainless
+Ka 0.000000 0.000000 0.000000
+Kd 0.717647 0.733333 0.745098
+Ks 0.330000 0.330000 0.330000
+map_Kd 货架/Steel_Brushed_Stainless.jpg
+
+newmtl Metal_Rough
+Ka 0.000000 0.000000 0.000000
+Kd 0.600000 0.615686 0.627451
+Ks 0.330000 0.330000 0.330000
+map_Kd 货架/Metal_Rough.jpg
+
