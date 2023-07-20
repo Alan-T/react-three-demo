@@ -15,8 +15,9 @@ import BaseSence from "./components/BaseSence";
 import PackingBox from "./components/PackingBox";
 
 const Warehouse = () => {
-  const [mqttUrl,setMqttUrl]=useState("ws://101.132.39.71:8083/mqtt")
+  const [mqttUrl, setMqttUrl] = useState("ws://101.132.39.71:8083/mqtt");
   const mqttRef = useRef(null);
+  const [cameraPosition,setCameraPosition]=useState([0, 8, 20])
   const [meshList, setMeshList] = useState([
     // {
     //   name: "货物0、0、0",
@@ -1174,7 +1175,9 @@ const Warehouse = () => {
   useEffect(() => {
     initMqtt();
     return () => {
-      mqttRef.value.end();
+      if (mqttRef.value) {
+        mqttRef.value.end(true);
+      }
     };
   }, []);
   const initMqtt = () => {
@@ -1249,22 +1252,36 @@ const Warehouse = () => {
 
   return (
     <div className="canvas-container">
+      {/* <div
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "20px",
+          zIndex: 200,
+        }}
+      >
+        <button>左视</button>
+        <button>俯视</button>
+        <button>重置</button>
+        <button>正视</button>
+        <button>右视</button>
+      </div> */}
       <Canvas dpr={[1, 2]}>
         <BaseSence></BaseSence>
         <Suspense fallback={null}>
-          <Scene url={"/货架/货架.glb"} position={[-16, 0, 10]}></Scene>
+          <Scene url={"/货架/货架.glb"} position={[-16, -4, 4]}></Scene>
           <Translation>
-            <Scene url={"/堆垛机/堆垛机.glb"} position={[12, 0, 8.6]}></Scene>
+            <Scene url={"/堆垛机/堆垛机.glb"} position={[12, -4, 2.6]}></Scene>
             <group position-y={0}>
               <group position-z={0}>
                 <Scene
                   url={"/货叉/货叉.glb"}
-                  position={[13.2, 2.1, 8.8]}
+                  position={[13.2, -1.9, 2.8]}
                 ></Scene>
               </group>
               <Scene
                 url={"/载货台/载货台.glb"}
-                position={[12.8, 2, 8.8]}
+                position={[12.8, -2, 2.8]}
               ></Scene>
             </group>
           </Translation>
@@ -1283,9 +1300,9 @@ const Warehouse = () => {
           ))}
         </Selection>
         <group position={[0, 0, 0]}>
-          <PackingBox position={[10.1, 0.55, 13]} key={"res.name1"} />
-          <PackingBox position={[11.2, 0.55, 13]} key={"res.name2"} />
-          <PackingBox position={[12.3, 0.55, 13]} key={"res.name3"} />
+          <PackingBox position={[10.1, -3.45, 7]} key={"res.name1"} />
+          <PackingBox position={[11.2,  -3.45, 7]} key={"res.name2"} />
+          <PackingBox position={[12.3,  -3.45, 7]} key={"res.name3"} />
         </group>
         <OrbitControls />
         <Stats />
