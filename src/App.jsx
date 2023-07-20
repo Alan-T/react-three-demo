@@ -1,13 +1,13 @@
-import Warehouse from './Warehouse'
+import React from 'react'
+import Warehouse from "./Warehouse";
+const WarehouseMemo = React.memo(Warehouse);
 
 function App() {
-
   return (
     <>
-    <Warehouse></Warehouse>
+      <WarehouseMemo></WarehouseMemo>
     </>
   );
 }
-
 
 export default App;
