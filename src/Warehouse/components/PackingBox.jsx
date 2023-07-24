@@ -27,6 +27,10 @@ const PackingBox = (props) => {
             event.stopPropagation();
             setActive(!active);
           }}
+          onPointerMissed={(event) => {
+            event.stopPropagation();
+            setActive(false);
+          }}
           onPointerEnter={(event) => {
             event.stopPropagation();
             setHover(true);
