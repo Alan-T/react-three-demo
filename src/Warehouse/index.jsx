@@ -168,7 +168,7 @@ const Warehouse = () => {
             />
           </EffectComposer>
           {meshList.map((res) => (
-            <PackingBox position={res.position} key={res.lpnCode} />
+            <PackingBox {...res} key={res.lpnCode} />
           ))}
         </Selection>
         <group position={[0, 0, 0]}>
