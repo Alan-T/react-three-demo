@@ -1,7 +1,9 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stats } from "@react-three/drei";
 import Model from "./components/Model";
+import Camera from "./components/BaseSence/components/Camera";
 import Loader from "./components/Loader";
+import CameraBtn from "./components/CameraBtn";
 import { useRef, useState, Suspense, useEffect } from "react";
 import mqtt from "mqtt/dist/mqtt.min";
 
@@ -18,15 +20,17 @@ import PackingBox from "./components/PackingBox";
 const Warehouse = () => {
   const [mqttUrl, setMqttUrl] = useState("ws://101.132.39.71:8083/mqtt");
   const mqttRef = useRef(null);
-  const [cameraPosition, setCameraPosition] = useState([0, 8, 20]);
+  const orbRef = useRef(null);
+  const [cameraPosition, setCameraPosition] = useState([6, 1, 18]);
   const [meshList, setMeshList] = useState([]);
   const [modelX, setModelX] = useState(36147);
   const [modelY, setModelY] = useState(309);
+
   useEffect(() => {
     initMqtt();
     return () => {
-      if (mqttRef.value) {
-        mqttRef.value.end(true);
+      if (mqttRef.current) {
+        mqttRef.current.end(true);
       }
     };
   }, []);
@@ -45,25 +49,25 @@ const Warehouse = () => {
       // reconnectPeriod: 1000, //设置多长时间进行重新连接 单位毫秒 两次重新连接之间的时间间隔。通过将设置为，禁用自动重新连接0
       // connectTimeout: 10 * 1000, // 收到CONNACK之前等待的时间
     };
-    mqttRef.value = mqtt.connect(mqttUrl);
-    mqttRef.value.on("connect", (connack) => {
+    mqttRef.current = mqtt.connect(mqttUrl);
+    mqttRef.current.on("connect", (connack) => {
       console.log("mqtt链接成功");
-      mqttRef.value.subscribe("monitor/obj/init", (err) => {
+      mqttRef.current.subscribe("monitor/obj/init", (err) => {
         if (!err) {
           console.log("订阅monitor/obj/init成功");
         }
       });
-      mqttRef.value.subscribe("monitor/obj/add", (err) => {
+      mqttRef.current.subscribe("monitor/obj/add", (err) => {
         if (!err) {
           console.log("订阅monitor/obj/add成功");
         }
       });
-      mqttRef.value.subscribe("monitor/obj/del", (err) => {
+      mqttRef.current.subscribe("monitor/obj/del", (err) => {
         if (!err) {
           console.log("订阅monitor/obj/del成功");
         }
       });
-      mqttRef.value.publish(
+      mqttRef.current.publish(
         "monitor/client/init",
         "Data init!",
         { qos: 2, retain: false },
@@ -75,7 +79,7 @@ const Warehouse = () => {
           }
         }
       );
-      mqttRef.value.on("message", function (topic, message, packet) {
+      mqttRef.current.on("message", function (topic, message, packet) {
         console.log("packet", packet);
         if (topic.toString() === "monitor/obj/init") {
           const res = JSON.parse(message.toString());
@@ -94,29 +98,43 @@ const Warehouse = () => {
         console.log(topic.toString());
         console.log(message.toString());
       });
-      mqttRef.value.on("offline", function () {
+      mqttRef.current.on("offline", function () {
         console.log("mqtt断开链接");
       });
     });
   };
 
+  const onCameraChanged = (direction) => {
+    switch (direction) {
+      case "left":
+        setCameraPosition([-26, 3, 0]);
+        break;
+      case "top":
+        setCameraPosition([0, 18, 0]);
+        break;
+      case "reset":
+        setCameraPosition([6, 1, 18]);
+        break;
+      case "front":
+        setCameraPosition([0, 3, 18]);
+        break;
+      case "right":
+        setCameraPosition([26, 3, 0]);
+        break;
+      default:
+        setCameraPosition([6, 1, 18]);
+        break;
+    }
+    if (orbRef.current) {
+      orbRef.current.reset();
+    }
+  };
+
   return (
     <div className="canvas-container">
-      {/* <div
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "20px",
-          zIndex: 200,
-        }}
-      >
-        <button>左视</button>
-        <button>俯视</button>
-        <button onClick={() => {}}>重置</button>
-        <button>正视</button>
-        <button>右视</button>
-      </div> */}
+      <CameraBtn onCameraChanged={onCameraChanged}></CameraBtn>
       <Canvas dpr={[1, 2]}>
+        <Camera position={cameraPosition}></Camera>
         <BaseSence></BaseSence>
         <Suspense fallback={<Loader />}>
           <Model url={"/货架/货架.glb"} position={[-16, -4, 4]}></Model>
@@ -158,7 +176,7 @@ const Warehouse = () => {
           <PackingBox position={[11.2, -3.45, 7]} key={"res.name2"} />
           <PackingBox position={[12.3, -3.45, 7]} key={"res.name3"} />
         </group>
-        <OrbitControls />
+        <OrbitControls ref={orbRef} />
         <Stats />
       </Canvas>
     </div>
