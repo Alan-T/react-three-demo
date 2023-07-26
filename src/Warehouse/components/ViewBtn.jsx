@@ -1,9 +1,10 @@
-function CameraBtn(props) {
+function ViewBtn(props) {
   return (
     <>
       <div
         style={{
           position: "absolute",
+          pointerEvents:'all',
           bottom: "20px",
           right: "20px",
           zIndex: 200,
@@ -19,4 +20,4 @@ function CameraBtn(props) {
   );
 }
 
-export default CameraBtn;
+export default ViewBtn;

@@ -3,12 +3,10 @@ import { OrbitControls, Stats } from "@react-three/drei";
 import Model from "./components/Model";
 import Camera from "./components/BaseSence/components/Camera";
 import Loader from "./components/Loader";
-import CameraBtn from "./components/CameraBtn";
+import ViewBtn from "./components/ViewBtn";
+import Header from "./components/Header";
 import { useRef, useState, Suspense, useEffect } from "react";
 import mqtt from "mqtt/dist/mqtt.min";
-
-import "../App.css";
-
 import {
   Selection,
   EffectComposer,
@@ -17,11 +15,12 @@ import {
 import BaseSence from "./components/BaseSence";
 import PackingBox from "./components/PackingBox";
 
+import "./index.css";
 const Warehouse = () => {
   const [mqttUrl, setMqttUrl] = useState("ws://101.132.39.71:8083/mqtt");
   const mqttRef = useRef(null);
   const orbRef = useRef(null);
-  const [cameraPosition, setCameraPosition] = useState([6, 1, 18]);
+  const [cameraPosition, setCameraPosition] = useState([4, 2, 18]);
   const [meshList, setMeshList] = useState([]);
   const [modelX, setModelX] = useState(36147);
   const [modelY, setModelY] = useState(309);
@@ -113,7 +112,7 @@ const Warehouse = () => {
         setCameraPosition([0, 18, 0]);
         break;
       case "reset":
-        setCameraPosition([6, 1, 18]);
+        setCameraPosition([4, 2, 18]);
         break;
       case "front":
         setCameraPosition([0, 3, 18]);
@@ -122,7 +121,7 @@ const Warehouse = () => {
         setCameraPosition([26, 3, 0]);
         break;
       default:
-        setCameraPosition([6, 1, 18]);
+        setCameraPosition([4, 2, 18]);
         break;
     }
     if (orbRef.current) {
@@ -132,7 +131,11 @@ const Warehouse = () => {
 
   return (
     <div className="canvas-container">
-      <CameraBtn onCameraChanged={onCameraChanged}></CameraBtn>
+      <div className="over-container">
+        <Header></Header>
+        <ViewBtn onCameraChanged={onCameraChanged}></ViewBtn>
+      </div>
+
       <Canvas dpr={[1, 2]}>
         <Camera position={cameraPosition}></Camera>
         <BaseSence></BaseSence>

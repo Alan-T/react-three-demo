@@ -1,0 +1,38 @@
+.header-container {
+    pointer-events: all;
+    height: 60px;
+    width: 100%;
+    background: linear-gradient(180deg, #001E39 51.04%, #175F92 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../../assets/image/header-left.png'), url('../../assets/image/header-right.png'), linear-gradient(180deg, #001E39 51.04%, #175F92 100%);
+    background-position: left bottom, right bottom;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 25%, 25%, 100%;
+    color: #fff;
+}
+
+.header-container .mid {
+    font-size: 30px;
+    width: 780px;
+    height: 100%;
+    background-image: url("../../assets/image/header-mid.png");
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.header-container .left {
+    font-family: 'DS-DIGI';
+    font-size: 24px;
+    padding-left: 120px;
+    width: calc(calc(100% - 780px) / 2);
+}
+
+.header-container .right {
+    width: calc(calc(100% - 780px) / 2);
+}
