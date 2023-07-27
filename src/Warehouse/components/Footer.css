@@ -1,0 +1,32 @@
+.footer-container {
+    position: absolute;
+    pointer-events: all;
+    bottom: 0px;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    background-image: url("../../assets/image/footer-bg.png");
+    background-size: 100% 80px;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-group {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-column-gap: 10px;
+}
+
+.btn-group button {
+    font-family: 'Alibaba PuHuiTi';
+    padding: 3px 12px;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(17, 156, 230, 0.50) 0%, rgba(0, 78, 184, 0.50) 45.31%, rgba(2, 68, 158, 0.50) 77.60%, rgba(2, 78, 183, 0.50) 100%);
+}
+
+.btn-group button:hover {
+    background: radial-gradient(1000.89% 100.04% at 535.29% -0.00%, #054B8B 0%, #053E81 27.71%, #001F4E 100%);
+}

@@ -214,3 +214,9 @@ template {
   src: url('../src/assets/font/DS-DIGI.ttf');
   font-weight: semiBold;
 }
+@font-face {
+  font-family: 'Alibaba PuHuiTi';
+  src: url('../src/assets/font/AlibabaPuHuiTi-3-55-Regular.ttf');
+  font-weight: semiBold;
+}
+

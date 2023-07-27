@@ -3,7 +3,7 @@ import { OrbitControls, Stats } from "@react-three/drei";
 import Model from "./components/Model";
 import Camera from "./components/BaseSence/components/Camera";
 import Loader from "./components/Loader";
-import ViewBtn from "./components/ViewBtn";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { useRef, useState, Suspense, useEffect } from "react";
 import mqtt from "mqtt/dist/mqtt.min";
@@ -133,7 +133,7 @@ const Warehouse = () => {
     <div className="canvas-container">
       <div className="over-container">
         <Header></Header>
-        <ViewBtn onCameraChanged={onCameraChanged}></ViewBtn>
+        <Footer onCameraChanged={onCameraChanged}></Footer>
       </div>
 
       <Canvas dpr={[1, 2]}>
