@@ -73,9 +73,9 @@ const PackingBox = (props) => {
           {hovered && (
             <Html distanceFactor={12} position={[0, 1.8, 0]}>
               <div className="label-content">
-                <div>托盘编号:{props.lpnCode}</div>
+                <div>托盘编号:{props.contNo}</div>
                 {props.locateNo ? <div>货架位置:{props.locateNo}</div> : null}
-                <div>上架时间:{props.createDate}</div>
+                <div>上架时间:{props.updateDate}</div>
               </div>
             </Html>
           )}

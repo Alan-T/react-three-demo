@@ -20,9 +20,6 @@ body {
   width: 100%;
   /*取消部分浏览器点击有阴影*/
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  /*优化移动端滚动事件*/
-  -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
 }
 
 body {
@@ -214,9 +211,9 @@ template {
   src: url('../src/assets/font/DS-DIGI.ttf');
   font-weight: semiBold;
 }
+
 @font-face {
   font-family: 'Alibaba PuHuiTi';
   src: url('../src/assets/font/AlibabaPuHuiTi-3-55-Regular.ttf');
   font-weight: semiBold;
 }
-
