@@ -24,6 +24,7 @@ const Warehouse = () => {
   const [meshList, setMeshList] = useState([]);
   const [modelX, setModelX] = useState(36147);
   const [modelY, setModelY] = useState(309);
+  const [showMsgBox, setShowMsgBox] = useState(null);
 
   useEffect(() => {
     initMqtt();
@@ -129,6 +130,10 @@ const Warehouse = () => {
     }
   };
 
+  const onSetShowMsgBox = (value) => {
+    setShowMsgBox(value);
+  };
+
   return (
     <div className="canvas-container">
       <div className="over-container">
@@ -171,7 +176,12 @@ const Warehouse = () => {
             />
           </EffectComposer>
           {meshList.map((res) => (
-            <PackingBox {...res} key={res.contNo} />
+            <PackingBox
+              {...res}
+              key={res.contNo}
+              setShowMsgBox={onSetShowMsgBox}
+              showMsgBox={showMsgBox}
+            />
           ))}
         </Selection>
         <group position={[0, 0, 0]}>

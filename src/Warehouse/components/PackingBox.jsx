@@ -5,8 +5,10 @@ import { Select } from "@react-three/postprocessing";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { suspend } from "suspend-react";
 const inter = import("@pmndrs/assets/fonts/inter_regular.woff");
+import "./PackingBox.css";
 
 const PackingBox = (props) => {
+  const { setShowMsgBox } = props;
   const meshRef = useRef();
   const textRef = useRef();
   const gltf = useLoader(GLTFLoader, "/托盘.glb");
@@ -27,14 +29,10 @@ const PackingBox = (props) => {
           ]}
           ref={meshRef}
           scale={active ? 1.5 : 1}
-          // onClick={(event) => {
-          //   event.stopPropagation();
-          //   setActive(!active);
-          // }}
-          // onPointerMissed={(event) => {
-          //   event.stopPropagation();
-          //   setActive(false);
-          // }}
+          onClick={(event) => {
+            event.stopPropagation();
+            setShowMsgBox(props.contNo);
+          }}
           onPointerEnter={(event) => {
             event.stopPropagation();
             setHover(true);
@@ -70,12 +68,39 @@ const PackingBox = (props) => {
           {/* 后边 */}
           {/* <meshStandardMaterial attach="material-5" color="orange" /> */}
 
-          {hovered && (
-            <Html distanceFactor={12} position={[0, 1.8, 0]}>
-              <div className="label-content">
-                <div>托盘编号:{props.contNo}</div>
-                {props.locateNo ? <div>货架位置:{props.locateNo}</div> : null}
-                <div>上架时间:{props.updateDate}</div>
+          {props.contNo && props.contNo === props.showMsgBox && (
+            <Html distanceFactor={12} position={[0, 2.3, 0]}>
+              <div className="detail-info">
+                <div
+                  className="close"
+                  onClick={() => {
+                    setShowMsgBox(null);
+                  }}
+                >
+                  x
+                </div>
+                <div className="header">托盘信息</div>
+                <div className="content">
+                  <ul>
+                    <li>
+                      <div className="label">托盘编号:</div>
+                      {props.contNo}
+                    </li>
+                    <li>
+                      {" "}
+                      {props.locateNo ? (
+                        <>
+                          <div className="label">货架位置:</div>
+                          {props.locateNo}
+                        </>
+                      ) : null}
+                    </li>
+                    <li>
+                      <div className="label">上架时间:</div>
+                      {props.updateDate}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </Html>
           )}

@@ -13,17 +13,4 @@
     height: 100%;
     width: 100%;
     pointer-events: none;
-
-}
-
-.label-content {
-    /* transform: translate3d(-10px, -120px, 0); */
-    pointer-events: none;
-    text-align: left;
-    background: rgba(47, 47, 193, 0.6);
-    color: white;
-    padding: 10px 20px;
-    width: 300px;
-    font-size: 20px;
-    border-radius: 5px;
 }

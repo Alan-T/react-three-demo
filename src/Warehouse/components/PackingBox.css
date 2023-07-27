@@ -1,0 +1,45 @@
+.detail-info {
+    pointer-events: none;
+    text-align: left;
+    background: rgba(18, 41, 62, .8);
+    color: white;
+    width: 360px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.detail-info .header {
+    height: 38px;
+    width: 100%;
+    line-height: 38px;
+    padding-left: 28px;
+    background-image: url("../../assets/image/detail-head.png");
+    background-size: 100% 38px;
+    background-repeat: no-repeat;
+}
+
+.detail-info .close {
+    position: absolute;
+    height: 38px;
+    width: 38px;
+    top: 0;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 28px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.detail-info .content {
+    padding: 10px 20px;
+}
+
+.detail-info .content li {
+    display: flex;
+}
+
+.detail-info .content li .label {
+    width: 100px;
+}

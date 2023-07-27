@@ -16,7 +16,7 @@
 .btn-group {
     padding-top: 20px;
     display: grid;
-    grid-template-columns: repeat(5, 60px);
+    grid-template-columns: repeat(5, 68px);
     grid-column-gap: 10px;
 }
 
