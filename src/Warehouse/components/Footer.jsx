@@ -8,7 +8,7 @@ function ViewBtn(props) {
     setActive(value);
     props.onCameraChanged(value);
   };
-  
+
   return (
     <>
       <div className="footer-container">
@@ -35,7 +35,7 @@ function ViewBtn(props) {
             className={active === "front" ? "active" : null}
             onClick={() => onBtnClick("front")}
           >
-            正 视
+            主 视
           </button>
           <button
             className={active === "right" ? "active" : null}
