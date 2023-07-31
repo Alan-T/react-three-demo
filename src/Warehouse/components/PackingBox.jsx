@@ -93,7 +93,6 @@ const PackingBox = (props) => {
                       {props.contNo}
                     </li>
                     <li>
-                      {" "}
                       {props.locateNo ? (
                         <>
                           <div className="label">货架位置:</div>
