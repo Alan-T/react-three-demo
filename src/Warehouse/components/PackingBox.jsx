@@ -23,9 +23,9 @@ const PackingBox = (props) => {
         <RoundedBox
           {...props}
           position={[
-            props.position[0],
-            props.position[1] + 0.135,
-            props.position[2],
+            parseFloat(props.position[0]),
+            parseFloat(props.position[1]) + 0.135,
+            parseFloat(props.position[2]),
           ]}
           ref={meshRef}
           scale={active ? 1.5 : 1}
@@ -109,9 +109,9 @@ const PackingBox = (props) => {
           <primitive
             object={gltf.scene.clone()}
             position={[
-              props.position[0] - 5.289,
-              props.position[1] - 0.55,
-              props.position[2] + 2.333,
+              parseFloat(props.position[0]) - 5.289,
+              parseFloat(props.position[1]) - 0.55,
+              parseFloat(props.position[2]) + 2.333,
             ]}
           />
         </Suspense>
