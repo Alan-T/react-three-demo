@@ -43,7 +43,13 @@ const PackingBox = (props) => {
           }}
         >
           {/* <boxGeometry args={[1, 1, 1]} /> */}
-          <meshStandardMaterial color="orange"></meshStandardMaterial>
+          <meshStandardMaterial
+            color={
+              props.contNo && props.contNo === props.showMsgBox
+                ? "#409EFF"
+                : "orange"
+            }
+          ></meshStandardMaterial>
           {/* <meshStandardMaterial attach="material-0" color="orange" /> */}
           {/* 左边 */}
           {/* <meshStandardMaterial attach="material-1" color="orange" /> */}
