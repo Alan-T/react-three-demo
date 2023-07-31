@@ -22,8 +22,14 @@ const Warehouse = () => {
   const orbRef = useRef(null);
   const [cameraPosition, setCameraPosition] = useState([4, 2, 18]);
   const [meshList, setMeshList] = useState([]);
-  const [modelX, setModelX] = useState(36147);
-  const [modelY, setModelY] = useState(309);
+  const [dvcObj, setDvcObj] = useState({
+    dvcNo: "",
+    posX: 36147,
+    posY: 309,
+    posZ: 10000,
+    status: 0,
+    noLoad: 0,
+  });
   const [showMsgBox, setShowMsgBox] = useState(null);
 
   useEffect(() => {
@@ -67,6 +73,11 @@ const Warehouse = () => {
           console.log("订阅monitor/obj/del成功");
         }
       });
+      mqttRef.current.subscribe("monitor/dvc/state", (err) => {
+        if (!err) {
+          console.log("订阅monitor/dvc/state成功");
+        }
+      });
       mqttRef.current.publish(
         "monitor/client/init",
         "Data init!",
@@ -93,7 +104,15 @@ const Warehouse = () => {
         }
         if (topic.toString() === "monitor/obj/del") {
           const res = JSON.parse(message.toString());
-          setMeshList(meshList.filter((item) => !res.includes(item)));
+          setMeshList((meshList) =>
+            meshList.filter(
+              (item) => !res.data.some((box) => box.contNo === item.contNo)
+            )
+          );
+        }
+        if (topic.toString() === "monitor/dvc/state") {
+          const res = JSON.parse(message.toString());
+          setDvcObj(res.data);
         }
         console.log(topic.toString());
         console.log(message.toString());
@@ -146,25 +165,30 @@ const Warehouse = () => {
         <BaseSence></BaseSence>
         <Suspense fallback={<Loader />}>
           <Model url={"/货架/货架.glb"} position={[-16, -4, 4]}></Model>
-          <group position-x={((modelX - 36147) / 1330) * 1.05}>
+          <group position-x={((dvcObj.posX - 36147) / 1330) * 1.05}>
             <Model
               url={"/堆垛机/堆垛机.glb"}
               position={[11.14, -4, 2.58]}
             ></Model>
-            <group position-y={((modelY - 309) / 2100) * 2.1}>
+            <group position-y={((dvcObj.posY - 309) / 2100) * 2.1}>
               <Model
                 url={"/载货台/载货台.glb"}
                 position={[11.83, -3.5, 2.7]}
               ></Model>
-              <group position-z={0}>
+              <group position-z={((10000 - dvcObj.posZ) / 2439) * 1.2}>
                 <Model
                   url={"/货叉/货叉.glb"}
                   position={[12.18, -3.4, 2.64]}
                 ></Model>
+                {dvcObj.noLoad === 1 ? (
+                  <PackingBox
+                    position={[12.48, -2.8, 2.22]}
+                    key={"res.name1"}
+                  />
+                ) : null}
               </group>
             </group>
           </group>
-          {/* <PackingBox position={[10.25, -2.8, 2.22]} key={"res.name1"} /> */}
         </Suspense>
         <Selection>
           <EffectComposer multisampling={8} autoClear={false}>
