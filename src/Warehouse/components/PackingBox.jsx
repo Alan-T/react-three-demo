@@ -31,7 +31,7 @@ const PackingBox = (props) => {
           scale={active ? 1.5 : 1}
           onClick={(event) => {
             event.stopPropagation();
-            setShowMsgBox(props.contNo);
+            setShowMsgBox && setShowMsgBox(props.contNo);
           }}
           onPointerEnter={(event) => {
             event.stopPropagation();
@@ -80,7 +80,7 @@ const PackingBox = (props) => {
                 <div
                   className="close"
                   onClick={() => {
-                    setShowMsgBox(null);
+                    setShowMsgBox && setShowMsgBox(null);
                   }}
                 >
                   x
