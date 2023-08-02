@@ -5,7 +5,7 @@
     left: 0;
     height: 80px;
     width: 100%;
-    background-image: url("../../assets/image/footer-bg.png");
+    background-image: url("../../../assets/image/footer-bg.png");
     background-size: 100% 80px;
     background-repeat: no-repeat;
     display: flex;

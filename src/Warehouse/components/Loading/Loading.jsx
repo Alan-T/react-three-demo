@@ -1,7 +1,7 @@
 import { Html, useProgress } from "@react-three/drei";
-import "./Loader.css";
+import "./Loading.css";
 
-function Loader() {
+function Loading() {
   const { progress } = useProgress();
   return (
     <Html center>
@@ -24,4 +24,4 @@ function Loader() {
   );
 }
 
-export default Loader;
+export default Loading;

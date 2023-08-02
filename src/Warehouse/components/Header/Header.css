@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-image: url('../../assets/image/header-left.png'), url('../../assets/image/header-right.png'), linear-gradient(180deg, #001E39 51.04%, #175F92 100%);
+    background-image: url('../../../assets/image/header-left.png'), url('../../../assets/image/header-right.png'), linear-gradient(180deg, #001E39 51.04%, #175F92 100%);
     background-position: left bottom, right bottom;
     background-repeat: no-repeat, no-repeat;
     background-size: 25%, 25%, 100%;
@@ -17,7 +17,7 @@
     font-size: 30px;
     width: 780px;
     height: 100%;
-    background-image: url("../../assets/image/header-mid.png");
+    background-image: url("../../../assets/image/header-mid.png");
     background-size: cover;
     background-position: center center;
     display: flex;
