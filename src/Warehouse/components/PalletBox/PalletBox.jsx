@@ -5,9 +5,9 @@ import { Select } from "@react-three/postprocessing";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { suspend } from "suspend-react";
 const inter = import("@pmndrs/assets/fonts/inter_regular.woff");
-import "./PackingBox.css";
+import "./PalletBox.css";
 
-const PackingBox = (props) => {
+const PalletBox = (props) => {
   const { setShowMsgBox } = props;
   const meshRef = useRef();
   const textRef = useRef();
@@ -125,4 +125,4 @@ const PackingBox = (props) => {
   );
 };
 
-export default PackingBox;
+export default PalletBox;

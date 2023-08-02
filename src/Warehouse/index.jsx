@@ -2,18 +2,21 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stats } from "@react-three/drei";
 import Model from "./components/Model";
 import Camera from "./components/BaseSence/components/Camera";
-import Loader from "./components/Loader";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Loader from "./components/Loader/Loader";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import TargetMarker from "./components/TargetMarker/TargetMarker";
 import { useRef, useState, Suspense, useEffect } from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import mqtt from "mqtt/dist/mqtt.min";
+
 import {
   Selection,
   EffectComposer,
   Outline,
 } from "@react-three/postprocessing";
 import BaseSence from "./components/BaseSence";
-import PackingBox from "./components/PackingBox";
+import PalletBox from "./components/PalletBox/PalletBox";
 
 import "./index.css";
 const Warehouse = () => {
@@ -181,10 +184,7 @@ const Warehouse = () => {
                   position={[12.18, -3.4, 2.64]}
                 ></Model>
                 {dvcObj.noLoad === 1 ? (
-                  <PackingBox
-                    position={[12.48, -2.8, 2.22]}
-                    key={"res.name1"}
-                  />
+                  <PalletBox position={[12.48, -2.8, 2.22]} key={"res.name1"} />
                 ) : null}
               </group>
             </group>
@@ -200,7 +200,7 @@ const Warehouse = () => {
             />
           </EffectComposer>
           {meshList.map((res) => (
-            <PackingBox
+            <PalletBox
               {...res}
               key={res.contNo}
               setShowMsgBox={onSetShowMsgBox}
@@ -208,10 +208,13 @@ const Warehouse = () => {
             />
           ))}
         </Selection>
+        {/* <TargetMarker  position={[11.3, -2.8, 3.42]}>
+          <FaMapMarkerAlt style={{ color: "indianred" }} />
+        </TargetMarker> */}
         <group position={[0, 0, 0]}>
-          <PackingBox position={[10.1, -3.45, 7]} key={"res.name1"} />
-          <PackingBox position={[11.2, -3.45, 7]} key={"res.name2"} />
-          <PackingBox position={[12.3, -3.45, 7]} key={"res.name3"} />
+          <PalletBox position={[10.1, -3.45, 7]} key={"res.name1"} />
+          <PalletBox position={[11.2, -3.45, 7]} key={"res.name2"} />
+          <PalletBox position={[12.3, -3.45, 7]} key={"res.name3"} />
         </group>
         <OrbitControls ref={orbRef} />
         <Stats />
