@@ -168,6 +168,9 @@ const Warehouse = () => {
         <BaseSence></BaseSence>
         <Suspense fallback={<Loading />}>
           <Model url={"/货架/货架.glb"} position={[-16, -4, 4]}></Model>
+          {/* <TargetMarker position={[11.3, -2.8, 3.42]}>
+            <FaMapMarkerAlt style={{ color: "indianred" }} />
+          </TargetMarker> */}
           <group position-x={((dvcObj.posX - 36147) / 1330) * 1.05}>
             <Model
               url={"/堆垛机/堆垛机.glb"}
@@ -184,7 +187,10 @@ const Warehouse = () => {
                   position={[12.18, -3.4, 2.64]}
                 ></Model>
                 {dvcObj.noLoad === 1 ? (
-                  <PalletBox position={[12.48, -2.8, 2.22]} key={"res.origin"} />
+                  <PalletBox
+                    position={[12.48, -2.8, 2.22]}
+                    key={"res.origin"}
+                  />
                 ) : null}
               </group>
             </group>
@@ -208,9 +214,6 @@ const Warehouse = () => {
             />
           ))}
         </Selection>
-        {/* <TargetMarker  position={[11.3, -2.8, 3.42]}>
-          <FaMapMarkerAlt style={{ color: "indianred" }} />
-        </TargetMarker> */}
         <group position={[0, 0, 0]}>
           <PalletBox position={[10.1, -3.45, 7]} key={"res.name1"} />
           <PalletBox position={[11.2, -3.45, 7]} key={"res.name2"} />

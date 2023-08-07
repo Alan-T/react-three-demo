@@ -9,10 +9,8 @@ export default function TargetMarker({ children, ...props }) {
   const [rotationY, setRotationY] = useState(0);
   useFrame((state, delta) => {
     setRotationY((old) => (old += delta) % 360);
-    console.log(delta);
   });
   return (
-    // <group >
     <Html
       ref={ref}
       rotation={[0, rotationY * 2, 0]}
