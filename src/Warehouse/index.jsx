@@ -201,6 +201,7 @@ const Warehouse = () => {
             <Outline
               blur
               visibleEdgeColor="green"
+              hiddenEdgeColor="red"
               edgeStrength={100}
               width={1000}
             />
