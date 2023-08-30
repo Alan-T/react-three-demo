@@ -34,6 +34,13 @@ const Warehouse = () => {
     noLoad: 0,
   });
   const [showMsgBox, setShowMsgBox] = useState(null);
+  const mqttTopic = {
+    initClient: "monitor/client/init", // 初始化客户端
+    initBoxes: "monitor/obj/init", // 托盘状态
+    addBoxes: "monitor/obj/add", // 添加托盘
+    delBoxes: "monitor/obj/del", // 删除托盘
+    stateDvc: "monitor/dvc/state", // 堆垛机状态
+  };
 
   useEffect(() => {
     initMqtt();
@@ -61,28 +68,28 @@ const Warehouse = () => {
     mqttRef.current = mqtt.connect(mqttUrl);
     mqttRef.current.on("connect", (connack) => {
       console.log("mqtt链接成功");
-      mqttRef.current.subscribe("monitor/obj/init", (err) => {
+      mqttRef.current.subscribe(mqttTopic.initBoxes, (err) => {
         if (!err) {
           console.log("订阅monitor/obj/init成功");
         }
       });
-      mqttRef.current.subscribe("monitor/obj/add", (err) => {
+      mqttRef.current.subscribe(mqttTopic.delBoxes, (err) => {
         if (!err) {
           console.log("订阅monitor/obj/add成功");
         }
       });
-      mqttRef.current.subscribe("monitor/obj/del", (err) => {
+      mqttRef.current.subscribe(mqttTopic.delBoxes, (err) => {
         if (!err) {
           console.log("订阅monitor/obj/del成功");
         }
       });
-      mqttRef.current.subscribe("monitor/dvc/state", (err) => {
+      mqttRef.current.subscribe(mqttTopic.stateDvc, (err) => {
         if (!err) {
           console.log("订阅monitor/dvc/state成功");
         }
       });
       mqttRef.current.publish(
-        "monitor/client/init",
+        mqttTopic.initClient,
         "Data init!",
         { qos: 2, retain: false },
         function (error) {
