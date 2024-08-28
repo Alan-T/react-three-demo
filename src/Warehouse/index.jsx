@@ -174,6 +174,7 @@ const Warehouse = () => {
         <Camera position={cameraPosition}></Camera>
         <BaseSence></BaseSence>
         <Suspense fallback={<Loading />}>
+          {/* <Model url={"/Robot.glb"} position={[-16, -4, 4]}></Model> */}
           <Model url={"/货架/货架.glb"} position={[-16, -4, 4]}></Model>
           {/* <TargetMarker position={[11.3, -2.8, 3.42]}>
             <FaMapMarkerAlt style={{ color: "indianred" }} />
