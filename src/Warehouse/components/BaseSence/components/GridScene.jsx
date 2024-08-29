@@ -5,7 +5,7 @@ const GridScene = (props) => {
     <>
       <Grid
         renderOrder={-1}
-        position={[0, -4, 0]}
+        position={[0, -8, 0]}
         infiniteGrid={true}
         cellSize={0.6}
         cellThickness={0.6}
