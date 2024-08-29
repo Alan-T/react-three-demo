@@ -7,7 +7,7 @@ const BaseSence = (props) => {
   return (
     <>
       <GridScene></GridScene>
-      <SkyScene></SkyScene>
+      {/* <SkyScene></SkyScene> */}
       <LightsScene></LightsScene>
       <GroundScene></GroundScene>
     </>

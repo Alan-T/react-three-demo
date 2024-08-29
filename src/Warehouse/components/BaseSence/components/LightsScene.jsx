@@ -1,8 +1,8 @@
 const LightsScene = () => {
   return (
     <>
-      <directionalLight color={0xffffff} intensity={3} position={[10, 10, 0]} />
-      <ambientLight intensity={0.5} />
+      <directionalLight color={0xffffff} intensity={2} position={[20, 20, 0]} />
+      <ambientLight intensity={0.35} />
     </>
   );
 };

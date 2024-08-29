@@ -23,7 +23,7 @@ const Warehouse = () => {
   const [mqttUrl, setMqttUrl] = useState("ws://101.132.39.71:8083/mqtt");
   const mqttRef = useRef(null);
   const orbRef = useRef(null);
-  const [cameraPosition, setCameraPosition] = useState([0, 3, 22]);
+  const [cameraPosition, setCameraPosition] = useState([0, 0, 22]);
   const [meshList, setMeshList] = useState([]);
   const [dvcObj, setDvcObj] = useState({
     dvcNo: "",
@@ -181,7 +181,7 @@ const Warehouse = () => {
           {/* <TargetMarker position={[11.3, -2.8, 3.42]}>
             <FaMapMarkerAlt style={{ color: "indianred" }} />
           </TargetMarker> */}
-          <group position-x={((dvcObj.posX - 36147) / 1330) * 1.05}>
+          {/* <group position-x={((dvcObj.posX - 36147) / 1330) * 1.05}>
             <Model
               url={"/堆垛机/堆垛机.glb"}
               position={[11.14, -4, 2.58]}
@@ -204,7 +204,7 @@ const Warehouse = () => {
                 ) : null}
               </group>
             </group>
-          </group>
+          </group> */}
         </Suspense>
         <Selection>
           <EffectComposer multisampling={8} autoClear={false}>
