@@ -23,7 +23,7 @@ const Warehouse = () => {
   const [mqttUrl, setMqttUrl] = useState("ws://101.132.39.71:8083/mqtt");
   const mqttRef = useRef(null);
   const orbRef = useRef(null);
-  const [cameraPosition, setCameraPosition] = useState([4, 2, 18]);
+  const [cameraPosition, setCameraPosition] = useState([0, 3, 22]);
   const [meshList, setMeshList] = useState([]);
   const [dvcObj, setDvcObj] = useState({
     dvcNo: "",
@@ -174,8 +174,10 @@ const Warehouse = () => {
         <Camera position={cameraPosition}></Camera>
         <BaseSence></BaseSence>
         <Suspense fallback={<Loading />}>
-          {/* <Model url={"/Robot.glb"} position={[-16, -4, 4]}></Model> */}
-          <Model url={"/货架/货架.glb"} position={[-16, -4, 4]}></Model>
+          <Model url={"/layer01.glb"} position={[0, -8, 0]}></Model>
+          <Model url={"/layer02.glb"} position={[0, -8, 0]}></Model>
+          <Model url={"/layer03.glb"} position={[0, -8, 0]}></Model>
+          {/* <Model url={"/货架/货架.glb"} position={[-16, -4, 4]}></Model> */}
           {/* <TargetMarker position={[11.3, -2.8, 3.42]}>
             <FaMapMarkerAlt style={{ color: "indianred" }} />
           </TargetMarker> */}
@@ -223,11 +225,11 @@ const Warehouse = () => {
             />
           ))}
         </Selection>
-        <group position={[0, 0, 0]}>
+        {/* <group position={[0, 0, 0]}>
           <PalletBox position={[10.1, -3.45, 7]} key={"res.name1"} />
           <PalletBox position={[11.2, -3.45, 7]} key={"res.name2"} />
           <PalletBox position={[12.3, -3.45, 7]} key={"res.name3"} />
-        </group>
+        </group> */}
         <OrbitControls ref={orbRef} />
         <Stats />
       </Canvas>
