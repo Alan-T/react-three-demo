@@ -142,7 +142,7 @@ const Warehouse = () => {
         setCameraPosition([0, 50, 0]);
         break;
       case "reset":
-        setCameraPosition([0, 6, 24]);
+        setCameraPosition([0, 16, 46]);
         break;
       case "front":
         setCameraPosition([0, 0, 50]);

@@ -11,18 +11,18 @@ const BaseSence = (props) => {
       <LightsScene></LightsScene>
       <GroundScene
       args={[120, 20]}
-      position={[0, -8.001, -24]}
-      color={ "#5f9ea0"}
+      position={[0, -8.001, -24.1]}
+      color={ "#9eacb8"}
       ></GroundScene>
         <GroundScene
       args={[120, 20]}
       position={[0, -8.001, -4]}
-      color={ "#8a2be2"}
+      color={ "#9eacb8"}
       ></GroundScene>
         <GroundScene
       args={[120, 20]}
-      position={[0, -8.001, 16]}
-      color={ "#ff8c00"}
+      position={[0, -8.001, 16.1]}
+      color={ "#9eacb8"}
       ></GroundScene>
     </>
   );
