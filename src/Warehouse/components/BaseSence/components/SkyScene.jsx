@@ -4,10 +4,12 @@ const SkyScene = () => {
     <>
       <Sky 
        turbidity={10} 
-       rayleigh= {6}
-       mieCoefficient= {0.005}
-       mieDirectionalG= {0.8}
-       sunPosition= {[0, 1, -100]}
+       rayleigh= {0}
+       mieCoefficient= {0.007}
+       mieDirectionalG= {0.12}
+       inclination={0.49}
+       azimuth={0.25}
+       sunPosition= {[7, 0, 0]}
       />
     </>
   );

@@ -23,7 +23,7 @@ const Warehouse = () => {
   const [mqttUrl, setMqttUrl] = useState("ws://101.132.39.71:8083/mqtt");
   const mqttRef = useRef(null);
   const orbRef = useRef(null);
-  const [cameraPosition, setCameraPosition] = useState([0, 0, 22]);
+  const [cameraPosition, setCameraPosition] = useState([0, 16, 46]);
   const [meshList, setMeshList] = useState([]);
   const [dvcObj, setDvcObj] = useState({
     dvcNo: "",
@@ -136,22 +136,22 @@ const Warehouse = () => {
   const onCameraChanged = (direction) => {
     switch (direction) {
       case "left":
-        setCameraPosition([-26, 3, 0]);
+        setCameraPosition([-40, 6, 0]);
         break;
       case "top":
-        setCameraPosition([0, 18, 0]);
+        setCameraPosition([0, 50, 0]);
         break;
       case "reset":
-        setCameraPosition([4, 2, 18]);
+        setCameraPosition([0, 6, 24]);
         break;
       case "front":
-        setCameraPosition([0, 3, 18]);
+        setCameraPosition([0, 0, 50]);
         break;
       case "right":
-        setCameraPosition([26, 3, 0]);
+        setCameraPosition([40, 6, 0]);
         break;
       default:
-        setCameraPosition([4, 2, 18]);
+        setCameraPosition([0, 6, 24]);
         break;
     }
     if (orbRef.current) {
@@ -174,9 +174,9 @@ const Warehouse = () => {
         <Camera position={cameraPosition}></Camera>
         <BaseSence></BaseSence>
         <Suspense fallback={<Loading />}>
-          <Model url={"/layer01.glb"} position={[0, -8, 0]}></Model>
+          <Model url={"/layer01.glb"} position={[0, -8, -20]}></Model>
           <Model url={"/layer02.glb"} position={[0, -8, 0]}></Model>
-          <Model url={"/layer03.glb"} position={[0, -8, 0]}></Model>
+          <Model url={"/layer03.glb"} position={[0, -20.4, 20]}></Model>
           {/* <Model url={"/货架/货架.glb"} position={[-16, -4, 4]}></Model> */}
           {/* <TargetMarker position={[11.3, -2.8, 3.42]}>
             <FaMapMarkerAlt style={{ color: "indianred" }} />

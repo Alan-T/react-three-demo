@@ -11,8 +11,8 @@ const GridScene = (props) => {
         cellThickness={0.6}
         sectionSize={3.3}
         sectionThickness={1.5}
-        sectionColor={[0.5, 10, 10]}
-        fadeDistance={80}
+        // sectionColor={[1, 20, 20]}
+        fadeDistance={120}
       />
     </>
   );
